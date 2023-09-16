@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .menu-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .category {
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-name {
+            flex-grow: 1;
+        }
+
+        .item-price {
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Animation */
+        .slide-in {
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="category">Appetizers</div>
+        <ul class="menu-list">
+            <li class="menu-item slide-in">
+                <span class="item-name">French Fries</span>
+                <span class="item-price">Rp.13.000,00</span>
+            </li>
+            <li class="menu-item slide-in">
+                <span class="item-name">Mozzarella Sticks </span>
+                <span class="item-price">Rp.15.000,00</span>
+            </li>
+        </ul>
+
+        <div class="category">Main Courses</div>
+        <ul class="menu-list hidden">
+            <li class="menu-item slide-in">
+                <span class="item-name">Spaghetti Bolognese </span>
+                <span class="item-price">Rp.30.000,00</span>
+            </li>
+            <li class="menu-item slide-in">
+                <span class="item-name">Fried Rice</span>
+                <span class="item-price">Rp.20.000,00</span>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const categories = document.querySelectorAll('.category');
+        const menuLists = document.querySelectorAll('.menu-list');
+
+        categories.forEach((category, index) => {
+            category.addEventListener('click', () => {
+                menuLists.forEach((list) => {
+                    list.classList.add('hidden');
+                });
+                menuLists[index].classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
